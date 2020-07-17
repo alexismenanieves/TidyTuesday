@@ -9,7 +9,7 @@ url <- glue("https://raw.githubusercontent.com/rfordatascience/",
 "tidytuesday/master/data/2020/2020-07-14/astronauts.csv")
 astronauts <- read_csv(url)
 
-# 3.Adecuate data
+# 3.Adecuate data and theme
 astronauts <- astronauts %>% 
   mutate(astro_age = year_of_mission - year_of_birth)
 
@@ -34,7 +34,7 @@ texts <- tibble(
            "The **two youngest astronauts** were Gherman Titov and Valentina Tereshkova, both aged 26."),
   vjust = c(-0.5,-0.5)
 )
-
+# 4.Create plot
 astronauts %>% 
   ggplot() + 
   geom_point(aes(astro_age, year_of_mission, color = sex, 
@@ -68,6 +68,6 @@ astronauts %>%
   annotate("curve", x = 18, xend = 25, y = 1966, yend = 1962,
            size = .75, arrow = arrow(length = unit(2,"mm")), color = "#ffa72b")
 
-# 4. Save the data
+# 5. Save the data
 ggsave(filename = file.path("Images", glue("Astronauts-", format(Sys.time(),"%Y%m%d"), ".png")), dpi = 160, height = 6, width = 10)
   
