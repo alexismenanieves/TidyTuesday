@@ -67,4 +67,7 @@ astronauts %>%
            size = .75, arrow = arrow(length = unit(2, "mm")), color = "#938ca1") +
   annotate("curve", x = 18, xend = 25, y = 1966, yend = 1962,
            size = .75, arrow = arrow(length = unit(2,"mm")), color = "#ffa72b")
+
+# 4. Save the data
+ggsave(filename = file.path("Images", glue("Astronauts-", format(Sys.time(),"%Y%m%d"), ".png")), dpi = 160, height = 6, width = 10)
   
